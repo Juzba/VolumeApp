@@ -26,6 +26,7 @@
 
             trayIcon.ContextMenuStrip.Items.Add("Exit", null, (sender, e) =>
             {
+                Program.cts.Cancel();
                 Program.form1Visible = false;
                 trayIcon.Visible = false;
                 Application.Exit();

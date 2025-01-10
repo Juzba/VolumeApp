@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             textBox1 = new TextBox();
+            timer1 = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // label1
@@ -73,6 +75,9 @@
             textBox1.Size = new Size(306, 324);
             textBox1.TabIndex = 3;
             // 
+            // timer1
+            // 
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -93,6 +98,7 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox textBox1;
+        private System.Windows.Forms.Timer timer1;
+        public static TextBox textBox1;
     }
 }

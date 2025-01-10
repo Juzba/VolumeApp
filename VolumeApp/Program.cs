@@ -2,8 +2,10 @@ namespace VolumeApp.Main;
 
 internal static class Program
 {
-    static Form1 mainForm;
     public static bool form1Visible = false;
+    public static CancellationTokenSource cts = new(); 
+    private static Form1 mainForm;
+    private static System.Timers.Timer myTimer;
 
     [STAThread]
     static void Main()
@@ -14,10 +16,18 @@ internal static class Program
         mainForm = new Form1 { ShowInTaskbar = false, WindowState = FormWindowState.Minimized };
         mainForm.FormClosing += MainForm_FormClosing;
 
+
+        // Vytvoøí nové vlákno které bude valit volume
+        Thread thread = new Thread(new ThreadStart(ThreadVolume));
+        thread.Start();
+
+
+
+        
+
+
+
         Tray.Minimized(mainForm);
-
-
-
 
         Application.Run(mainForm);
 
@@ -33,4 +43,12 @@ internal static class Program
             mainForm.ShowInTaskbar = false;
         }
     }
+
+
+    static void ThreadVolume()
+    {
+        Volume.VolumeMain();
+    }
+
+
 }
