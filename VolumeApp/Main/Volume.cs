@@ -22,15 +22,18 @@ namespace VolumeApp.Main
                 {
                     if ((GetAsyncKeyState(0x7A) & 0x8000) != 0)
                     {
-                        //Form1.textBox1.Text = "F11";
-                        //Console.WriteLine("F11");
+                        Program.mainForm.Invoke(new Action(() => Form1.textBox1.AppendText("F11")));
                         DecreaseVolume(defaultDevice, 3);
                     }
                     if ((GetAsyncKeyState(0x7B) & 0x8000) != 0)
                     {
-                        //Form1.textBox1.Text = "F12";
-                        //Console.WriteLine("F12");
+                        Program.mainForm.Invoke(new Action(() => Form1.textBox1.AppendText("F12")));
                         IncreaseVolume(defaultDevice, 3);
+                    }
+                    if ((GetAsyncKeyState(0x79) & 0x8000) != 0)
+                    {
+                        Program.mainForm.Invoke(new Action(() => Form1.textBox1.AppendText("F10")));
+                        defaultDevice.AudioEndpointVolume.MasterVolumeLevelScalar = 0f;
                     }
                 }
 

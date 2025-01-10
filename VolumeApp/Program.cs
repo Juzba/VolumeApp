@@ -4,7 +4,7 @@ internal static class Program
 {
     public static bool form1Visible = false;
     public static CancellationTokenSource cts = new(); 
-    private static Form1 mainForm;
+    public static Form1 mainForm = new Form1 { ShowInTaskbar = false, WindowState = FormWindowState.Minimized };
     private static System.Timers.Timer myTimer;
 
     [STAThread]
@@ -13,7 +13,6 @@ internal static class Program
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
 
-        mainForm = new Form1 { ShowInTaskbar = false, WindowState = FormWindowState.Minimized };
         mainForm.FormClosing += MainForm_FormClosing;
 
 
